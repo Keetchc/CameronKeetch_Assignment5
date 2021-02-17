@@ -1,0 +1,29 @@
+﻿<!--Acts as the shared layout for the site. Uses bootstrap to style, and renders the body in the RenderBody() tag-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-light navbar-dark bg-dark">
+            <ul class="navbar-nav mr-auto d-flex flex-row bd-highlight mb-3">
+                <li class="navbar-item p-2 pl-4 bd-highlight"><a class="nav-link" asp-action="Index">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br />
+    <br />
+
+
+    @RenderBody()
+
+
+<footer class="text-center footer bg-dark text-light p-4">Cameron Keetch &#169 2021</footer>
+</body>
+</html>

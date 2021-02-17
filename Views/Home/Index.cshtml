@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Book Store";
+}
+
+<!--Calls the model and makes it queryable-->
+@model IQueryable<Book>
+
+<div class="text-center text-dark mt-3 mb-2">
+    <h1>Online Book Store</h1>
+</div>
+
+<!--Uses a table to style the data returned from the database in a nice style, also uses bootstrap.-->
+<div class="text-center">
+    <h4 class="mb-2 text-dark">Here is a list of books that we currently have for sale:</h4>
+   
+    <div class="table-responsive" style="max-width:75rem; margin:0 auto;">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr><th scope="col">Title:</th><th scope="col">Author:</th><th scope="col">Publisher:</th><th scope="col">ISBN:</th>
+                <th scope="col">Classification/Category:</th><th scope="col">Price</th></tr>
+            </thead>
+
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.Title</td>
+                        <td>@x.Author</td>
+                        <td>@x.Publisher</td>
+                        <td>@x.ISBN</td>
+                        <td>@x.ClassificationCategory</td>
+                        <td>$@x.Price</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
