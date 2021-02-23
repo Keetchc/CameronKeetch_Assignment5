@@ -15,6 +15,8 @@ namespace CameronKeetch_Assignment5.Models
         
         public string Author { get; set; }
 
+        public int Pages { get; set; }
+
         public string Publisher { get; set; }
 
         //Regular expression requires it to be in ###-##########

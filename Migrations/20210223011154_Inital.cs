@@ -10,14 +10,15 @@ namespace CameronKeetch_Assignment5.Migrations
                 name: "Books",
                 columns: table => new
                 {
-                    BookId = table.Column<int>(nullable: false)
+                    BookId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
-                    Publisher = table.Column<string>(nullable: true),
-                    ISBN = table.Column<string>(nullable: true),
-                    ClassificationCategory = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(nullable: false)
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Author = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Pages = table.Column<int>(type: "int", nullable: false),
+                    Publisher = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClassificationCategory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

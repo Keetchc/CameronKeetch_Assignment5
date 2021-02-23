@@ -29,6 +29,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "Les Miserables",
                         Author = "Victor Hugo",
+                        Pages = 1488,
                         Publisher = "Signet",
                         ISBN = "978-0451419439",
                         ClassificationCategory = "Fiction, Classic",
@@ -39,6 +40,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "Team of Rivals",
                         Author = "Doris Kearns Goodwin",
+                        Pages = 944,
                         Publisher = "Simon & Schuster",
                         ISBN = "978-0743270755",
                         ClassificationCategory = "Non-Fiction, Biography",
@@ -49,6 +51,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "The Snowball",
                         Author = "Alice Schroeder",
+                        Pages = 832,
                         Publisher = "Bantam",
                         ISBN = "978-0553384611",
                         ClassificationCategory = "Non-Fiction, Biography",
@@ -59,6 +62,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "American Ulysses",
                         Author = "Ronald C. White",
+                        Pages = 864,
                         Publisher = "Random House",
                         ISBN = " 978-0812981254 ",
                         ClassificationCategory = "Non-Fiction, Biography",
@@ -69,6 +73,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "Unbroken",
                         Author = "Laura Hillenbrand",
+                        Pages = 528,
                         Publisher = "Random House",
                         ISBN = "978-0812974492",
                         ClassificationCategory = "Non-Fiction, Historical",
@@ -79,6 +84,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "The Great Train Robbery",
                         Author = "Michael Crichton",
+                        Pages = 288,
                         Publisher = "Vintage",
                         ISBN = "978-0804171281",
                         ClassificationCategory = "Fiction, Historical Fiction",
@@ -89,6 +95,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "Deep Work",
                         Author = "Cal Newport",
+                        Pages = 304,
                         Publisher = "Grand Central Publishing",
                         ISBN = "978-1455586691",
                         ClassificationCategory = "Non-Fiction, Self-Help",
@@ -99,6 +106,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "It's Your Ship",
                         Author = "Michael Abrashoff",
+                        Pages = 240,
                         Publisher = "Grand Central Publishing",
                         ISBN = "978-1455523023",
                         ClassificationCategory = "Non-Fiction, Self-Help",
@@ -109,6 +117,7 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "The Virgin Way",
                         Author = "Richard Branson",
+                        Pages = 400,
                         Publisher = "Portfolio",
                         ISBN = "978-1591847984 ",
                         ClassificationCategory = "Non-Fiction, Business",
@@ -119,12 +128,46 @@ namespace CameronKeetch_Assignment5.Models
                     {
                         Title = "Sycamore Row",
                         Author = "John Grisham",
+                        Pages = 642,
                         Publisher = "Bantam",
                         ISBN = "978-0553393613",
                         ClassificationCategory = "Fiction, Thrillers",
                         Price = 15.03,
-                    });
+                    },
 
+
+                    new Book
+                    {
+                        Title = "Ender's Game",
+                        Author = "Orson Scott Card",
+                        Pages = 324,
+                        Publisher = "Tor Books",
+                        ISBN = "978-1250174468",
+                        ClassificationCategory = "Fiction, Sci-Fi",
+                        Price = 7.99,
+                    },
+
+                    new Book
+                    {
+                        Title = "Harry Potter and the Deathly Hallows",
+                        Author = "J.K. Rowling",
+                        Pages = 607,
+                        Publisher = "Scholastic",
+                        ISBN = "978-0545029377",
+                        ClassificationCategory = "Fiction, Fantasy",
+                        Price = 13.86,
+                    },
+
+                    new Book
+                    {
+                        Title = "Way of Kings",
+                        Author = "Brandon Sanderson",
+                        Pages = 1007,
+                        Publisher = "Tor Books",
+                        ISBN = "978-0765326355",
+                        ClassificationCategory = "Fiction, Fantasy",
+                        Price = 9.59,
+                    });
                 context.SaveChanges();
             }
         }

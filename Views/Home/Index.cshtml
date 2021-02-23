@@ -2,30 +2,31 @@
     ViewBag.Title = "Book Store";
 }
 
-<!--Calls the model and makes it queryable-->
-@model IQueryable<Book>
+<!--Calls the modee-->
+@model BookListViewModel
 
 <div class="text-center text-dark mt-3 mb-2">
     <h1>Online Book Store</h1>
 </div>
 
-<!--Uses a table to style the data returned from the database in a nice style, also uses bootstrap.-->
+<!--Uses a table to style the data returned from the database in a nice style, also uses bootstrap. New bootstrap commands include btn-group, navbar-brand, table-hover and table-striped-->
 <div class="text-center">
     <h4 class="mb-2 text-dark">Here is a list of books that we currently have for sale:</h4>
    
-    <div class="table-responsive" style="max-width:75rem; margin:0 auto;">
+    <div class="table-responsive table-striped table-hover" style="max-width:75rem; margin:0 auto;">
         <table class="table">
             <thead class="thead-dark">
-                <tr><th scope="col">Title:</th><th scope="col">Author:</th><th scope="col">Publisher:</th><th scope="col">ISBN:</th>
+                <tr><th scope="col">Title:</th><th scope="col">Author:</th><th scope="col">Pages:</th><th scope="col">Publisher:</th><th scope="col">ISBN:</th>
                 <th scope="col">Classification/Category:</th><th scope="col">Price</th></tr>
             </thead>
 
             <tbody>
-                @foreach (var x in Model)
+                @foreach (var x in Model.Books)
                 {
                     <tr>
                         <td>@x.Title</td>
                         <td>@x.Author</td>
+                        <td>@x.Pages</td>
                         <td>@x.Publisher</td>
                         <td>@x.ISBN</td>
                         <td>@x.ClassificationCategory</td>
@@ -35,4 +36,8 @@
             </tbody>
         </table>
     </div>
+
+    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" 
+                                       page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-dark" class="text-center btn-group pull-right m-1"></div>
+
 </div>
