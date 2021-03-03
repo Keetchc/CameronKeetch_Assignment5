@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body style="overflow-x:hidden;">
     <header>
         <nav class="navbar navbar-light navbar-dark bg-dark">
             <!--First time using navbar-brand bootstrap-->
@@ -19,13 +19,24 @@
             </ul>
         </nav>
     </header>
-    <br />
-    <br />
+    <div class="row text-center mt-xl-5 mb-2">
+        <div class="col-1"></div>
+
+        <div class="text-center text-dark col-3">
+            <h1>Online Book Store</h1>
+
+            <!--Adds in the ViewComponent-->
+            <vc:navigation-menu />
+        </div>
+        <div class="col-7">
+            @RenderBody()
+        </div>
+
+        <div class="col-1"> </div>
+    </div>
+    
 
 
-    @RenderBody()
-
-
-<footer class="text-center footer bg-dark text-light p-4">Cameron Keetch &#169 2021</footer>
+    <footer class="text-center footer bg-dark text-light p-4">Cameron Keetch &#169 2021</footer>
 </body>
 </html>

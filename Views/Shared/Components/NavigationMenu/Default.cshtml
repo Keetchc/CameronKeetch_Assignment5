@@ -1,0 +1,11 @@
+﻿@model IEnumerable<string>
+
+<!--This page is used to display the NavigationView Component on the Index.cshtml. Uses a foreach loop to bring in the data and format it correctly-->
+<a class="btn btn-block btn-outline-dark" asp-action="Index" asp-controller="Home" asp-route-category="">Home</a>
+
+@foreach (string category in Model)
+{
+    <a class=" = btn btn-block @(category == ViewBag.SelectedCategory ? "btn-dark" : "btn-outline-dark")"
+       asp-action="Index" asp-controller="Home" 
+       asp-route-category ="@category" asp-route-page="1">@category</a>
+}

@@ -30,9 +30,7 @@ namespace CameronKeetch_Assignment5
 
             //add a new service that allows us to reference the Connection String and connect to our database
             services.AddDbContext<OnlineBooksDbContext>(options =>
-           {
-               options.UseSqlServer(Configuration["ConnectionStrings:OnlineBooksConnection"]);
-           });
+                options.UseSqlite(Configuration["ConnectionStrings:OnlineBooksConnection"]));
 
             //each session gets its own scoped version of what is happening
             services.AddScoped<IOnlineBooksRepository, EFOnlineBooksRepository>();
@@ -60,6 +58,19 @@ namespace CameronKeetch_Assignment5
 
             app.UseEndpoints(endpoints =>
             {
+                //creating esentially different URL options to get to certain pages, and what is going to be displayed
+                endpoints.MapControllerRoute("catpage",
+                    "{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("page",
+                    "{page:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("catergory",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 });
+                
                 endpoints.MapControllerRoute(
                     "pagination",
                     "P{page}",

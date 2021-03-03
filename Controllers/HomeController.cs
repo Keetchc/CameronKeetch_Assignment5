@@ -26,12 +26,14 @@ namespace CameronKeetch_Assignment5.Controllers
         }
 
         //pass in the _repository variable and pass the Books created. Also deals with how many pages and items per page
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
             return View(new BookListViewModel
             {
                 //Passing in book information
-                Books = _repository.Books.OrderBy(p => p.BookId)
+                Books = _repository.Books
+                                         .Where(p => category == null || p.Category == category)
+                                         .OrderBy(p => p.BookId)
                                          .Skip((page - 1) * PageSize)
                                          .Take(PageSize)
                 ,
@@ -41,10 +43,13 @@ namespace CameronKeetch_Assignment5.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalNumItems = _repository.Books.Count()
-                }
+                    TotalNumItems = category == null ? _repository.Books.Count() :
+                        _repository.Books.Where(x => x.Category == category).Count()
+                },
 
-            });     
+                CurrentCategory = category
+
+            }) ;     
         }
 
         public IActionResult Privacy()
