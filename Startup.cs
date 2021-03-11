@@ -1,6 +1,7 @@
 using CameronKeetch_Assignment5.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -34,6 +35,17 @@ namespace CameronKeetch_Assignment5
 
             //each session gets its own scoped version of what is happening
             services.AddScoped<IOnlineBooksRepository, EFOnlineBooksRepository>();
+
+            //adds a service so RazorPages work
+            services.AddRazorPages();
+
+            //add sessions
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            //Things to make the cart work the way that it is intended
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +64,9 @@ namespace CameronKeetch_Assignment5
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            //has the app start up a session.
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -60,11 +75,11 @@ namespace CameronKeetch_Assignment5
             {
                 //creating esentially different URL options to get to certain pages, and what is going to be displayed
                 endpoints.MapControllerRoute("catpage",
-                    "{category}/{page:int}",
+                    "{category}/{pageNum:int}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute("page",
-                    "{page:int}",
+                    "{pageNum:int}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute("catergory",
@@ -73,10 +88,12 @@ namespace CameronKeetch_Assignment5
                 
                 endpoints.MapControllerRoute(
                     "pagination",
-                    "P{page}",
+                    "P{pageNum}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
 
             //Calls the SeedData.EnsurePopulated function. Makes sure there is data in our database.
